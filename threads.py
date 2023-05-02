@@ -1,20 +1,18 @@
+import time
 from threading import Thread
+import time
 
-def carro1(velocidade):
+def carro(velocidade, piloto):
     trajeto = 0
     while trajeto <= 100:
-        print('Carro1: ', trajeto)
         trajeto+=velocidade
-
-def carro2(velocidade):
-    trajeto = 0
-    while trajeto <= 100:
-        print('Carro2: ', trajeto)
-        trajeto+=velocidade
+        time.sleep(0.5)
+        print('Piloto: {} km: {} \n'.format(piloto, trajeto))
 
 
-t_carro1 = Thread(target=carro1, args=[1])
-t_carro2 = Thread(target=carro1, args=[1.5])
+
+t_carro1 = Thread(target=carro, args=[1, 'Bruno'])
+t_carro2 = Thread(target=carro, args=[1.5, 'Python'])
 
 t_carro1.start()
 t_carro2.start()
